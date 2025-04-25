@@ -1,0 +1,35 @@
+<ion-header [translucent]="true">
+    <ion-toolbar>
+      <ion-title>
+        Citas
+      </ion-title>
+      <ion-buttons slot="end">
+        <ion-button [routerLink]="['/configuracion']">
+          <ion-icon icon="settings-outline" slot="icon-only" />
+        </ion-button>
+      </ion-buttons>
+    </ion-toolbar>
+  </ion-header>
+
+<ion-content [fullscreen]="true">
+
+    <ng-content *ngIf="randomCita !== null">
+        <app-cita
+          [id]="randomCita.id"
+          [frase]="randomCita.frase"
+          [autor]="randomCita.autor"
+          [permitirBorrarCitasEnInicio]="permitirBorrarCitasEnInicio"
+          (onCitaEliminadaEvent)="onCitaElimina()"
+        ></app-cita>
+    </ng-content>
+
+    <ion-fab slot="fixed" vertical="bottom" horizontal="end">
+      <ion-fab-button [routerLink]="['/gestion']">
+        <ion-icon name="add-outline"></ion-icon>
+      </ion-fab-button>
+    </ion-fab>
+    
+
+</ion-content>
+
+<ion-toast message="Cita eliminada." [isOpen]="isToastEliminacionOpen" (didDismiss)="setToastEliminacionOpen(false)" [duration]="3000"></ion-toast>

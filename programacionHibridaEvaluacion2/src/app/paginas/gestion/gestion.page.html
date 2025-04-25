@@ -1,0 +1,25 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>Gestión de citas</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-buttons slot="start">
+        <ion-back-button></ion-back-button>
+      </ion-buttons>
+      <ion-title size="large">Gestión de citas</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <app-crear-cita (onCitaCreadaEvent)="onCitaCreada()"></app-crear-cita>
+  <app-lista-citas [citas]="citas" (onCitaEliminadaEvent)="onCitaEliminada()"></app-lista-citas>
+</ion-content>
+
+<ion-toast message="Cita agregada." [isOpen]="isToastCreacionOpen" (didDismiss)="setToastCreacionOpen(false)" [duration]="3000"></ion-toast>
+<ion-toast message="Cita eliminada." [isOpen]="isToastEliminacionOpen" (didDismiss)="setToastEliminacionOpen(false)" [duration]="3000"></ion-toast>

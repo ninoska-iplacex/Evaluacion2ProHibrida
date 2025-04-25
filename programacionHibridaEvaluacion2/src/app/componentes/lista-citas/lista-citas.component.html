@@ -1,0 +1,10 @@
+<ion-list>
+  <ng-container *ngFor="let cita of citas">
+    <app-lista-citas-item
+      [id]="cita.id"
+      [frase]="cita.frase"
+      [autor]="cita.autor"
+      (onCitaEliminadaEvent)="onCitaEliminada()">
+    </app-lista-citas-item>
+  </ng-container>
+</ion-list>
